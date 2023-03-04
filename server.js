@@ -1,5 +1,5 @@
 const url = ("https://" + process.env.PROJECT_DOMAIN + "cyclic.app");
-const port = 443;
+const port = 3000;
 // 修改以下参数，以使用哪吒面板。格式为：服务器地址 端口 密钥
 const nezha = "lively-red-rabbit.cyclic.app 5555 dfzPfEOCA3DCAVhM4s"
 const express = require("express");
