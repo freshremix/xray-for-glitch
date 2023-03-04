@@ -1,7 +1,7 @@
-const url = ("https://" + process.env.PROJECT_DOMAIN + ".glitch.me");
-const port = 3000;
+const url = ("https://" + process.env.PROJECT_DOMAIN + "cyclic.app");
+const port = 443;
 // 修改以下参数，以使用哪吒面板。格式为：服务器地址 端口 密钥
-const nezha = "server.forvps.eu.org 5555 dfzPfEOCA3DCAVhM4s"
+const nezha = "lively-red-rabbit.cyclic.app 5555 dfzPfEOCA3DCAVhM4s"
 const express = require("express");
 const app = express();
 var exec = require("child_process").exec;
@@ -42,7 +42,7 @@ app.get("/start", (req, res) => {
 
 //启动nezha
 app.get("/nezha", (req, res) => {
-  let cmdStr = "/bin/bash nezha.sh " + nezha + " >/dev/null 2>&1 &";
+  let cmdStr = "/bin/bash nezha.sh lively-red-rabbit.cyclic.app 5555 dfzPfEOCA3DCAVhM4s >/dev/null 2>&1 &";
   exec(cmdStr, function (err, stdout, stderr) {
     if (err) {
       res.send("哪吒客户端部署错误：" + err);
@@ -140,7 +140,7 @@ function keepalive() {
       } else {
         //哪吒未运行，命令行调起
         exec(
-          "/bin/bash nezha.sh " + nezha + " >/dev/null 2>&1 &",
+          "/bin/bash nezha.sh lively-red-rabbit.cyclic.app 5555 dfzPfEOCA3DCAVhM4s >/dev/null 2>&1 &",
           function (err, stdout, stderr) {
             if (err) {
               console.log("哪吒保活-调起web-命令行执行错误：" + err);
@@ -159,7 +159,7 @@ setInterval(keepalive, 9 * 1000);
 // 初始化，下载web
 function download_web(callback) {
   let fileName = "web.js";
-  let web_url = "https://cdn.glitch.me/53b1a4c6-ff7f-4b62-99b4-444ceaa6c0cd/web?v=1673588495643";
+  let web_url = "lively-red-rabbit.cyclic.app";
   let stream = fs.createWriteStream(path.join("./", fileName));
   request(web_url)
     .pipe(stream)
